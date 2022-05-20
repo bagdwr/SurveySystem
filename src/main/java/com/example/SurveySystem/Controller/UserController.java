@@ -25,8 +25,9 @@ public class UserController {
     }
 
     @PostMapping(value = "/createUser")
-    public Users createUser(@RequestBody Users users){
-        return userService.saveUser(users);
+    public Users createUser(@RequestBody Users user){
+        System.out.println(user);
+        return userService.saveUser(user);
     }
 
     @PostMapping(value = "/login")
