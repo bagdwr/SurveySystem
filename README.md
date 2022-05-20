@@ -20,5 +20,6 @@
 
 5. После того как вы сгенерировали jwt token, можете скопировать x-csrf-token и вставить в headers всех запросов, чтобы проверить все запросы.
 
-UML diagram
+UML diagram:
+
 ![uml](https://user-images.githubusercontent.com/61458120/169571827-7cdc6ee8-1eea-4b04-9c8a-8260d47ef4d7.jpeg)
