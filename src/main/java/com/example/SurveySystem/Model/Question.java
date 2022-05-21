@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity(name = "question")
 @Table
@@ -21,11 +20,12 @@ public class Question {
     @Column(name = "questionLabel")
     private String label;
 
+
+    @Column(name = "question_type")
+    private QuestionType questionType;
+
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "survey_id")
     private Survey survey;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "question_type_id")
-    private QuestionType questionType;
 }
