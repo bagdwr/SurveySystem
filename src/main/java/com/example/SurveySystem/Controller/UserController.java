@@ -1,7 +1,7 @@
 package com.example.SurveySystem.Controller;
 
 import com.example.SurveySystem.Model.Users;
-import com.example.SurveySystem.UserService;
+import com.example.SurveySystem.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;

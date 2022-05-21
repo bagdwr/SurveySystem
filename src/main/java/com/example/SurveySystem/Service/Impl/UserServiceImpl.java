@@ -1,11 +1,12 @@
-package com.example.SurveySystem;
+package com.example.SurveySystem.Service.Impl;
 
 import com.example.SurveySystem.Model.Users;
 import com.example.SurveySystem.Repository.UserRepository;
+import com.example.SurveySystem.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -17,10 +18,12 @@ import java.util.Objects;
 @Service
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
+    private final BCryptPasswordEncoder passwordEncoder;
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository) {
+    public UserServiceImpl(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
 
@@ -43,6 +46,8 @@ public class UserServiceImpl implements UserService {
     public Users saveUser(Users user) {
         Users checkUsers = getUserByLogin(user.getLogin());
         if (checkUsers == null) {
+            String password = user.getPassword();
+            user.setPassword(passwordEncoder.encode(password));
             checkUsers = userRepository.save(user);
         }
         return checkUsers;    }

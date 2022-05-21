@@ -6,21 +6,16 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@Entity(name = "survey")
+@Entity(name = "questionType")
 @Table
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Survey {
+public class QuestionType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Integer id;
 
-    @Column(name = "name")
-    private String name;
-
-    @ManyToOne(fetch= FetchType.EAGER, cascade = CascadeType.ALL)
-    private Users user;
-
+    @Column(name = "type")
+    private String type;
 }

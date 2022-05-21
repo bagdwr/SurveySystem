@@ -2,7 +2,7 @@ package com.example.SurveySystem.Configuration;
 
 import com.example.SurveySystem.Filter.JwtCsrfFilter;
 import com.example.SurveySystem.Security.JwtTokenRepository;
-import com.example.SurveySystem.UserService;
+import com.example.SurveySystem.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;

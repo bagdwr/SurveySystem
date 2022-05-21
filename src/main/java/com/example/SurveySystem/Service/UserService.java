@@ -1,4 +1,4 @@
-package com.example.SurveySystem;
+package com.example.SurveySystem.Service;
 
 import com.example.SurveySystem.Model.Users;
 import org.springframework.security.core.userdetails.User;

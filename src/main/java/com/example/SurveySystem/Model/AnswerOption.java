@@ -5,27 +5,25 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 
-@Entity(name = "question")
+@Entity(name = "AnswerOption")
 @Table
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Question {
+public class AnswerOption {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Integer id;
 
-    @Column(name = "questionLabel")
-    private String label;
+    @Column(name = "text")
+    private String text;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "survey_id")
-    private Survey survey;
+    @JoinColumn(name = "answer_id")
+    private Answer answer;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "question_type_id")
-    private QuestionType questionType;
+    @JoinColumn(name = "option_id")
+    private Option option;
 }
