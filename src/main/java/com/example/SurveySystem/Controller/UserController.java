@@ -3,6 +3,8 @@ package com.example.SurveySystem.Controller;
 import com.example.SurveySystem.Model.Users;
 import com.example.SurveySystem.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
@@ -25,11 +27,18 @@ public class UserController {
     }
 
     @PostMapping(value = "/createUser")
-    public Users createUser(@RequestBody Users user){
-        System.out.println(user);
-        return userService.saveUser(user);
+    public ResponseEntity createUser(@RequestBody Users user){
+        Users created = userService.saveUser(user);
+        if (created!=null){
+            return new ResponseEntity(created, HttpStatus.OK);
+        }
+        return new ResponseEntity("Error",HttpStatus.CONFLICT);
     }
 
+    @DeleteMapping(value = "/deleteUser")
+    public void deleteUser(@RequestParam(name = "id")Integer id){
+        userService.deleteUser(id);
+    }
     @PostMapping(value = "/login")
     public @ResponseBody
     Users getAuthUser(){
