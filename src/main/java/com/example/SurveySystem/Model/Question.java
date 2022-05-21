@@ -20,7 +20,6 @@ public class Question {
     @Column(name = "questionLabel")
     private String label;
 
-
     @Column(name = "question_type")
     private QuestionType questionType;
 

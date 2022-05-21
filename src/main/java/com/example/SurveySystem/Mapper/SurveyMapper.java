@@ -15,7 +15,6 @@ public class SurveyMapper implements RowMapper<Survey> {
         Survey survey = new Survey();
         survey.setId(rs.getInt("id"));
         survey.setName(rs.getString("name"));
-
         survey.setUser(new Users(rs.getInt("user_id"),null,null,null,null));
         return null;
     }

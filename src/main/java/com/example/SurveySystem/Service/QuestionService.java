@@ -7,5 +7,5 @@ import java.util.List;
 public interface QuestionService {
     Question findQuestionById(Integer id);
     List<Question> findAll();
-    Question saveQuestion(Question question);
+    int saveQuestion(Question question);
 }

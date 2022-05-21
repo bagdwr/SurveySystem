@@ -1,5 +1,7 @@
 package com.example.SurveySystem.Controller;
 
+import com.example.SurveySystem.Model.Question;
+import com.example.SurveySystem.Model.QuestionType;
 import com.example.SurveySystem.Model.Survey;
 import com.example.SurveySystem.Service.QuestionService;
 import com.example.SurveySystem.Service.SurveyService;
@@ -51,6 +53,20 @@ public class MainController {
     ){
         Survey survey = new Survey(null,name,userService.getUserById(user_id));
         int k = surveyService.saveSurvey(survey);
+        if (k!=-1){
+            return new ResponseEntity("created",HttpStatus.OK);
+        }
+        return new ResponseEntity("not done",HttpStatus.BAD_REQUEST);
+    }
+
+    @PostMapping(value = "/createQuestion")
+    public ResponseEntity createQuestion(
+            @RequestParam(name = "label")String label,
+            @RequestParam(name = "type") String type,
+            @RequestParam(name = "survey_id")Integer id
+    ){
+        Question question = new Question(null,label, QuestionType.valueOf(type),surveyService.getSurveyById(id));
+        int k = questionService.saveQuestion(question);
         if (k!=-1){
             return new ResponseEntity("created",HttpStatus.OK);
         }
